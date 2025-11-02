@@ -1,0 +1,132 @@
+{
+  "info": {
+    "_postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+    "name": "KataDavivienda",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12884394",
+    "_collection_link": "https://bold-moon-530135.postman.co/workspace/Automatizacion-de-servicios~3955bb5d-9a33-48eb-94da-1276e1b24714/collection/12884394-15726e28-6cf0-4897-a018-dd051f896596?action=share&source=collection_link&creator=12884394"
+  },
+  "item": [
+    {
+      "name": "personal-details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+              "    pm.response.to.have.status(422);\r",
+              "});\r",
+              "\r",
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+              "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Campo inválido es empNumber\", function () {\r",
+              "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+              "});\r",
+              "\r",
+              "// Mostrar en consola qué parámetro falló\r",
+              "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json, text/plain, */*"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "https://opensource-demo.orangehrmlive.com"
+          },
+          {
+            "key": "Referer",
+            "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          },
+          {
+            "key": "Cookie",
+            "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/pim/employees/185/personal-details",
+          "protocol": "https",
+          "host": [
+            "opensource-demo",
+            "orangehrmlive",
+            "com"
+          ],
+          "path": [
+            "web",
+            "index.php",
+            "api",
+            "v2",
+            "pim",
+            "employees",
+            "185",
+            "personal-details"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
