@@ -1,0 +1,1824 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+      "exporter_id": "12884394",
+      "collection_link": "https://bold-moon-530135.postman.co/workspace/Automatizacion-de-servicios~3955bb5d-9a33-48eb-94da-1276e1b24714/collection/12884394-15726e28-6cf0-4897-a018-dd051f896596?action=share&source=collection_link&creator=12884394"
+    },
+    "item": [
+      {
+        "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+        "name": "personal-details",
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "web",
+              "index.php",
+              "api",
+              "v2",
+              "pim",
+              "employees",
+              "185",
+              "personal-details"
+            ],
+            "host": [
+              "opensource-demo",
+              "orangehrmlive",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json, text/plain, */*"
+            },
+            {
+              "key": "Accept-Language",
+              "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Origin",
+              "value": "https://opensource-demo.orangehrmlive.com"
+            },
+            {
+              "key": "Referer",
+              "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+            },
+            {
+              "key": "Sec-Fetch-Dest",
+              "value": "empty"
+            },
+            {
+              "key": "Sec-Fetch-Mode",
+              "value": "cors"
+            },
+            {
+              "key": "Sec-Fetch-Site",
+              "value": "same-origin"
+            },
+            {
+              "key": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+            },
+            {
+              "key": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+            },
+            {
+              "key": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "key": "sec-ch-ua-platform",
+              "value": "\"Windows\""
+            },
+            {
+              "key": "Cookie",
+              "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+            }
+          ],
+          "method": "PUT",
+          "body": {
+            "mode": "raw",
+            "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                "    pm.response.to.have.status(422);\r",
+                "});\r",
+                "\r",
+                "const jsonData = pm.response.json();\r",
+                "\r",
+                "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                "});\r",
+                "\r",
+                "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                "});\r",
+                "\r",
+                "// Mostrar en consola qué parámetro falló\r",
+                "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+              ],
+              "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "variable": [],
+    "info": {
+      "_postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+      "name": "KataDavivienda",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "id": "2e2e669d-7784-46f5-9e76-0179f0422505",
+    "values": []
+  },
+  "globals": {
+    "id": "177cf471-5047-4fed-9c68-e25a79114a61",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 1
+      },
+      "prerequests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 3,
+        "pending": 0,
+        "failed": 3
+      },
+      "testScripts": {
+        "total": 1,
+        "pending": 0,
+        "failed": 1
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 447,
+      "responseMin": 447,
+      "responseMax": 447,
+      "responseSd": 0,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1762110750133,
+      "completed": 1762110750660
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "02dd7b2c-3bbd-4d5e-a6a4-3551ceab4caf",
+          "httpRequestId": "a87fb27b-b276-4b29-a12b-1e2dfde8c54b"
+        },
+        "item": {
+          "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+          "name": "personal-details",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "web",
+                "index.php",
+                "api",
+                "v2",
+                "pim",
+                "employees",
+                "185",
+                "personal-details"
+              ],
+              "host": [
+                "opensource-demo",
+                "orangehrmlive",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Origin",
+                "value": "https://opensource-demo.orangehrmlive.com"
+              },
+              {
+                "key": "Referer",
+                "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-origin"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"Windows\""
+              },
+              {
+                "key": "Cookie",
+                "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                  "    pm.response.to.have.status(422);\r",
+                  "});\r",
+                  "\r",
+                  "const jsonData = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                  "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                  "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                  "});\r",
+                  "\r",
+                  "// Mostrar en consola qué parámetro falló\r",
+                  "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                ],
+                "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "web",
+              "index.php",
+              "api",
+              "v2",
+              "pim",
+              "employees",
+              "185",
+              "personal-details"
+            ],
+            "host": [
+              "opensource-demo",
+              "orangehrmlive",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json, text/plain, */*"
+            },
+            {
+              "key": "Accept-Language",
+              "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Origin",
+              "value": "https://opensource-demo.orangehrmlive.com"
+            },
+            {
+              "key": "Referer",
+              "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+            },
+            {
+              "key": "Sec-Fetch-Dest",
+              "value": "empty"
+            },
+            {
+              "key": "Sec-Fetch-Mode",
+              "value": "cors"
+            },
+            {
+              "key": "Sec-Fetch-Site",
+              "value": "same-origin"
+            },
+            {
+              "key": "User-Agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+            },
+            {
+              "key": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+            },
+            {
+              "key": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "key": "sec-ch-ua-platform",
+              "value": "\"Windows\""
+            },
+            {
+              "key": "Cookie",
+              "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "49a74a5d-3680-47b7-a1d6-303b414f4c18",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "opensource-demo.orangehrmlive.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "192",
+              "system": true
+            }
+          ],
+          "method": "PUT",
+          "body": {
+            "mode": "raw",
+            "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "9873e106-c604-49e4-a18c-65b5f4039d34",
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Server",
+              "value": "nginx"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 02 Nov 2025 19:12:30 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubdomains;"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              101,
+              114,
+              114,
+              111,
+              114,
+              34,
+              58,
+              123,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              52,
+              48,
+              49,
+              44,
+              34,
+              109,
+              101,
+              115,
+              115,
+              97,
+              103,
+              101,
+              34,
+              58,
+              34,
+              83,
+              101,
+              115,
+              115,
+              105,
+              111,
+              110,
+              32,
+              101,
+              120,
+              112,
+              105,
+              114,
+              101,
+              100,
+              34,
+              125,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 447,
+          "responseSize": 52
+        },
+        "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+        "assertions": [
+          {
+            "assertion": "El servicio devuelve 422 por parámetro inválido",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "El servicio devuelve 422 por parámetro inválido",
+              "message": "expected response to have status code 422 but got 401",
+              "stack": "AssertionError: expected response to have status code 422 but got 401\n   at Object.eval sandbox-script.js:1:1)"
+            }
+          },
+          {
+            "assertion": "Mensaje de error indica parámetro inválido",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 1,
+              "test": "Mensaje de error indica parámetro inválido",
+              "message": "expected 'Session expired' to deeply equal 'Invalid Parameter'",
+              "stack": "AssertionError: expected 'Session expired' to deeply equal 'Invalid Parameter'\n   at Object.eval sandbox-script.js:2:1)"
+            }
+          },
+          {
+            "assertion": "Campo inválido es empNumber",
+            "skipped": false,
+            "error": {
+              "name": "TypeError",
+              "index": 2,
+              "test": "Campo inválido es empNumber",
+              "message": "Cannot read properties of undefined (reading 'invalidParamKeys')",
+              "stack": "TypeError: Cannot read properties of undefined (reading 'invalidParamKeys')\n   at Object.eval sandbox-script.js:3:1)"
+            }
+          }
+        ],
+        "testScript": [
+          {
+            "error": {
+              "type": "Error",
+              "name": "TypeError",
+              "message": "Cannot read properties of undefined (reading 'invalidParamKeys')",
+              "checksum": "815643420c2ffd607179cbe2b1d40b45",
+              "id": "f6049f72-f56b-42f6-8cbe-80099a355c28",
+              "timestamp": 1762110750627,
+              "stacktrace": []
+            }
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 52
+    },
+    "failures": [
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "El servicio devuelve 422 por parámetro inválido",
+          "message": "expected response to have status code 422 but got 401",
+          "stack": "AssertionError: expected response to have status code 422 but got 401\n   at Object.eval sandbox-script.js:1:1)",
+          "checksum": "ad23d0e65a3782eca1219bc3bfc7842d",
+          "id": "6f68da0f-24b0-4827-92ec-426c5007114a",
+          "timestamp": 1762110750617,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+          "name": "personal-details",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "web",
+                "index.php",
+                "api",
+                "v2",
+                "pim",
+                "employees",
+                "185",
+                "personal-details"
+              ],
+              "host": [
+                "opensource-demo",
+                "orangehrmlive",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Origin",
+                "value": "https://opensource-demo.orangehrmlive.com"
+              },
+              {
+                "key": "Referer",
+                "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-origin"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"Windows\""
+              },
+              {
+                "key": "Cookie",
+                "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                  "    pm.response.to.have.status(422);\r",
+                  "});\r",
+                  "\r",
+                  "const jsonData = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                  "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                  "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                  "});\r",
+                  "\r",
+                  "// Mostrar en consola qué parámetro falló\r",
+                  "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                ],
+                "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "exporter_id": "12884394",
+            "collection_link": "https://bold-moon-530135.postman.co/workspace/Automatizacion-de-servicios~3955bb5d-9a33-48eb-94da-1276e1b24714/collection/12884394-15726e28-6cf0-4897-a018-dd051f896596?action=share&source=collection_link&creator=12884394"
+          },
+          "item": [
+            {
+              "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+              "name": "personal-details",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "web",
+                    "index.php",
+                    "api",
+                    "v2",
+                    "pim",
+                    "employees",
+                    "185",
+                    "personal-details"
+                  ],
+                  "host": [
+                    "opensource-demo",
+                    "orangehrmlive",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+                  },
+                  {
+                    "key": "Connection",
+                    "value": "keep-alive"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "https://opensource-demo.orangehrmlive.com"
+                  },
+                  {
+                    "key": "Referer",
+                    "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+                  },
+                  {
+                    "key": "Sec-Fetch-Dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "Sec-Fetch-Mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "Sec-Fetch-Site",
+                    "value": "same-origin"
+                  },
+                  {
+                    "key": "User-Agent",
+                    "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"Windows\""
+                  },
+                  {
+                    "key": "Cookie",
+                    "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                      "    pm.response.to.have.status(422);\r",
+                      "});\r",
+                      "\r",
+                      "const jsonData = pm.response.json();\r",
+                      "\r",
+                      "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                      "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                      "});\r",
+                      "\r",
+                      "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                      "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                      "});\r",
+                      "\r",
+                      "// Mostrar en consola qué parámetro falló\r",
+                      "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                    ],
+                    "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "name": "KataDavivienda",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "02dd7b2c-3bbd-4d5e-a6a4-3551ceab4caf",
+          "httpRequestId": "a87fb27b-b276-4b29-a12b-1e2dfde8c54b",
+          "scriptId": "831358a1-9454-4be3-a178-d22c44f8563c",
+          "execution": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 1,
+          "test": "Mensaje de error indica parámetro inválido",
+          "message": "expected 'Session expired' to deeply equal 'Invalid Parameter'",
+          "stack": "AssertionError: expected 'Session expired' to deeply equal 'Invalid Parameter'\n   at Object.eval sandbox-script.js:2:1)",
+          "checksum": "05419b869e3d2cb61a126ac1b504de65",
+          "id": "2f714be7-20e9-44e3-be96-0c744d3a19c1",
+          "timestamp": 1762110750622,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 2,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:1 in test-script",
+        "source": {
+          "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+          "name": "personal-details",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "web",
+                "index.php",
+                "api",
+                "v2",
+                "pim",
+                "employees",
+                "185",
+                "personal-details"
+              ],
+              "host": [
+                "opensource-demo",
+                "orangehrmlive",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Origin",
+                "value": "https://opensource-demo.orangehrmlive.com"
+              },
+              {
+                "key": "Referer",
+                "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-origin"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"Windows\""
+              },
+              {
+                "key": "Cookie",
+                "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                  "    pm.response.to.have.status(422);\r",
+                  "});\r",
+                  "\r",
+                  "const jsonData = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                  "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                  "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                  "});\r",
+                  "\r",
+                  "// Mostrar en consola qué parámetro falló\r",
+                  "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                ],
+                "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "exporter_id": "12884394",
+            "collection_link": "https://bold-moon-530135.postman.co/workspace/Automatizacion-de-servicios~3955bb5d-9a33-48eb-94da-1276e1b24714/collection/12884394-15726e28-6cf0-4897-a018-dd051f896596?action=share&source=collection_link&creator=12884394"
+          },
+          "item": [
+            {
+              "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+              "name": "personal-details",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "web",
+                    "index.php",
+                    "api",
+                    "v2",
+                    "pim",
+                    "employees",
+                    "185",
+                    "personal-details"
+                  ],
+                  "host": [
+                    "opensource-demo",
+                    "orangehrmlive",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+                  },
+                  {
+                    "key": "Connection",
+                    "value": "keep-alive"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "https://opensource-demo.orangehrmlive.com"
+                  },
+                  {
+                    "key": "Referer",
+                    "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+                  },
+                  {
+                    "key": "Sec-Fetch-Dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "Sec-Fetch-Mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "Sec-Fetch-Site",
+                    "value": "same-origin"
+                  },
+                  {
+                    "key": "User-Agent",
+                    "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"Windows\""
+                  },
+                  {
+                    "key": "Cookie",
+                    "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                      "    pm.response.to.have.status(422);\r",
+                      "});\r",
+                      "\r",
+                      "const jsonData = pm.response.json();\r",
+                      "\r",
+                      "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                      "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                      "});\r",
+                      "\r",
+                      "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                      "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                      "});\r",
+                      "\r",
+                      "// Mostrar en consola qué parámetro falló\r",
+                      "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                    ],
+                    "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "name": "KataDavivienda",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "02dd7b2c-3bbd-4d5e-a6a4-3551ceab4caf",
+          "httpRequestId": "a87fb27b-b276-4b29-a12b-1e2dfde8c54b",
+          "scriptId": "831358a1-9454-4be3-a178-d22c44f8563c",
+          "execution": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+        }
+      },
+      {
+        "error": {
+          "name": "TypeError",
+          "index": 2,
+          "test": "Campo inválido es empNumber",
+          "message": "Cannot read properties of undefined (reading 'invalidParamKeys')",
+          "stack": "TypeError: Cannot read properties of undefined (reading 'invalidParamKeys')\n   at Object.eval sandbox-script.js:3:1)",
+          "checksum": "718e3ae8588a6a2abff7cca401c692a7",
+          "id": "55aa135d-e4af-491a-a44b-89ee7d4665b8",
+          "timestamp": 1762110750622,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 3,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:2 in test-script",
+        "source": {
+          "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+          "name": "personal-details",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "web",
+                "index.php",
+                "api",
+                "v2",
+                "pim",
+                "employees",
+                "185",
+                "personal-details"
+              ],
+              "host": [
+                "opensource-demo",
+                "orangehrmlive",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Origin",
+                "value": "https://opensource-demo.orangehrmlive.com"
+              },
+              {
+                "key": "Referer",
+                "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-origin"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"Windows\""
+              },
+              {
+                "key": "Cookie",
+                "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                  "    pm.response.to.have.status(422);\r",
+                  "});\r",
+                  "\r",
+                  "const jsonData = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                  "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                  "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                  "});\r",
+                  "\r",
+                  "// Mostrar en consola qué parámetro falló\r",
+                  "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                ],
+                "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "exporter_id": "12884394",
+            "collection_link": "https://bold-moon-530135.postman.co/workspace/Automatizacion-de-servicios~3955bb5d-9a33-48eb-94da-1276e1b24714/collection/12884394-15726e28-6cf0-4897-a018-dd051f896596?action=share&source=collection_link&creator=12884394"
+          },
+          "item": [
+            {
+              "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+              "name": "personal-details",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "web",
+                    "index.php",
+                    "api",
+                    "v2",
+                    "pim",
+                    "employees",
+                    "185",
+                    "personal-details"
+                  ],
+                  "host": [
+                    "opensource-demo",
+                    "orangehrmlive",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+                  },
+                  {
+                    "key": "Connection",
+                    "value": "keep-alive"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "https://opensource-demo.orangehrmlive.com"
+                  },
+                  {
+                    "key": "Referer",
+                    "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+                  },
+                  {
+                    "key": "Sec-Fetch-Dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "Sec-Fetch-Mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "Sec-Fetch-Site",
+                    "value": "same-origin"
+                  },
+                  {
+                    "key": "User-Agent",
+                    "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"Windows\""
+                  },
+                  {
+                    "key": "Cookie",
+                    "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                      "    pm.response.to.have.status(422);\r",
+                      "});\r",
+                      "\r",
+                      "const jsonData = pm.response.json();\r",
+                      "\r",
+                      "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                      "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                      "});\r",
+                      "\r",
+                      "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                      "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                      "});\r",
+                      "\r",
+                      "// Mostrar en consola qué parámetro falló\r",
+                      "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                    ],
+                    "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "name": "KataDavivienda",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "02dd7b2c-3bbd-4d5e-a6a4-3551ceab4caf",
+          "httpRequestId": "a87fb27b-b276-4b29-a12b-1e2dfde8c54b",
+          "scriptId": "831358a1-9454-4be3-a178-d22c44f8563c",
+          "execution": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+        }
+      },
+      {
+        "error": {
+          "type": "Error",
+          "name": "TypeError",
+          "message": "Cannot read properties of undefined (reading 'invalidParamKeys')",
+          "checksum": "815643420c2ffd607179cbe2b1d40b45",
+          "id": "f6049f72-f56b-42f6-8cbe-80099a355c28",
+          "timestamp": 1762110750627,
+          "stacktrace": []
+        },
+        "at": "test-script",
+        "source": {
+          "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+          "name": "personal-details",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "web",
+                "index.php",
+                "api",
+                "v2",
+                "pim",
+                "employees",
+                "185",
+                "personal-details"
+              ],
+              "host": [
+                "opensource-demo",
+                "orangehrmlive",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json, text/plain, */*"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Origin",
+                "value": "https://opensource-demo.orangehrmlive.com"
+              },
+              {
+                "key": "Referer",
+                "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+              },
+              {
+                "key": "Sec-Fetch-Dest",
+                "value": "empty"
+              },
+              {
+                "key": "Sec-Fetch-Mode",
+                "value": "cors"
+              },
+              {
+                "key": "Sec-Fetch-Site",
+                "value": "same-origin"
+              },
+              {
+                "key": "User-Agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+              },
+              {
+                "key": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+              },
+              {
+                "key": "sec-ch-ua-mobile",
+                "value": "?0"
+              },
+              {
+                "key": "sec-ch-ua-platform",
+                "value": "\"Windows\""
+              },
+              {
+                "key": "Cookie",
+                "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                  "    pm.response.to.have.status(422);\r",
+                  "});\r",
+                  "\r",
+                  "const jsonData = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                  "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                  "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                  "});\r",
+                  "\r",
+                  "// Mostrar en consola qué parámetro falló\r",
+                  "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                ],
+                "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "exporter_id": "12884394",
+            "collection_link": "https://bold-moon-530135.postman.co/workspace/Automatizacion-de-servicios~3955bb5d-9a33-48eb-94da-1276e1b24714/collection/12884394-15726e28-6cf0-4897-a018-dd051f896596?action=share&source=collection_link&creator=12884394"
+          },
+          "item": [
+            {
+              "id": "f601777e-bcd5-4a42-9d53-acd9ded29704",
+              "name": "personal-details",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "web",
+                    "index.php",
+                    "api",
+                    "v2",
+                    "pim",
+                    "employees",
+                    "185",
+                    "personal-details"
+                  ],
+                  "host": [
+                    "opensource-demo",
+                    "orangehrmlive",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json, text/plain, */*"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "en-CO,en;q=0.9,es-CO;q=0.8,es;q=0.7,en-GB;q=0.6,en-US;q=0.5"
+                  },
+                  {
+                    "key": "Connection",
+                    "value": "keep-alive"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Origin",
+                    "value": "https://opensource-demo.orangehrmlive.com"
+                  },
+                  {
+                    "key": "Referer",
+                    "value": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/185"
+                  },
+                  {
+                    "key": "Sec-Fetch-Dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "Sec-Fetch-Mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "Sec-Fetch-Site",
+                    "value": "same-origin"
+                  },
+                  {
+                    "key": "User-Agent",
+                    "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?0"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"Windows\""
+                  },
+                  {
+                    "key": "Cookie",
+                    "value": "orangehrm=pnlffkrue5fj6n8ifgpubqpaf3"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"lastName\":\"Anderson\",\"firstName\":\"Peter Mac\",\"middleName\":\"\",\"employeeId\":\"0007\",\"otherId\":\"\",\"drivingLicenseNo\":\"\",\"drivingLicenseExpiredDate\":null,\"gender\":null,\"birthday\":null}\r\n\r\n\r\n \r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "831358a1-9454-4be3-a178-d22c44f8563c",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"El servicio devuelve 422 por parámetro inválido\", function () {\r",
+                      "    pm.response.to.have.status(422);\r",
+                      "});\r",
+                      "\r",
+                      "const jsonData = pm.response.json();\r",
+                      "\r",
+                      "pm.test(\"Mensaje de error indica parámetro inválido\", function () {\r",
+                      "    pm.expect(jsonData.error.message).to.eql(\"Invalid Parameter\");\r",
+                      "});\r",
+                      "\r",
+                      "pm.test(\"Campo inválido es empNumber\", function () {\r",
+                      "    pm.expect(jsonData.error.data.invalidParamKeys).to.include(\"empNumber\");\r",
+                      "});\r",
+                      "\r",
+                      "// Mostrar en consola qué parámetro falló\r",
+                      "console.log(\"Parámetros inválidos:\", jsonData.error.data.invalidParamKeys);"
+                    ],
+                    "_lastExecutionId": "1d6208d3-a391-4ab5-a20e-f08376477b1c"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "15726e28-6cf0-4897-a018-dd051f896596",
+            "name": "KataDavivienda",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "02dd7b2c-3bbd-4d5e-a6a4-3551ceab4caf",
+          "httpRequestId": "a87fb27b-b276-4b29-a12b-1e2dfde8c54b",
+          "scriptId": "831358a1-9454-4be3-a178-d22c44f8563c"
+        }
+      }
+    ],
+    "error": null
+  }
+}
