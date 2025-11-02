@@ -1,0 +1,42 @@
+# ==========================================================
+# Azure DevOps Pipeline - KataDaviviendaAPI (Node.js + Newman + Postman)
+# Repositorio: https://github.com/NicolasDaza/KataDaviviendaAPIS
+# ==========================================================
+
+trigger:
+- master 
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+# Descargar el repositorio de GitHub
+- checkout: none  
+- script: |
+    git clone https://github.com/NicolasDaza/KataDaviviendaAPIS.git
+  displayName: 'Clonar repositorio de GitHub'
+
+# Instalar Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Instalar Node.js'
+
+# Instalar Newman
+- script: |
+    npm install -g newman
+  displayName: 'Instalar Newman'
+
+# Ejecutar colección Postman
+- script: |
+    newman run KataDaviviendaAPIS/KataDaviviendaAPI.postman.json `
+      --reporters cli,junit `
+      --reporter-junit-export newman-results.xml
+  displayName: 'Ejecutar colección Postman con Newman'
+
+# Publicar resultados 
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'newman-results.xml'
+  displayName: 'Publicar resultados de Newman'
