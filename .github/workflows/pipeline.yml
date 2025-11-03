@@ -29,7 +29,7 @@ jobs:
       # 4️⃣ Ejecutar colección Postman
       - name: Run Postman collection
         run: |
-          newman run KataDaviviendaAPI.postman.json \
+          newman run src/KataDaviviendaAPI.postman.json \
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
 
